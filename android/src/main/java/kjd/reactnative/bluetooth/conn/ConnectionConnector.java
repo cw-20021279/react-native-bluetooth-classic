@@ -10,8 +10,10 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * Responsible for performing the actual connection to a {@link BluetoothDevice}.  Implementations
- * will accept the {@link BluetoothDevice} and connection {@link Properties} and attempt
+ * Responsible for performing the actual connection to a
+ * {@link BluetoothDevice}. Implementations
+ * will accept the {@link BluetoothDevice} and connection {@link Properties} and
+ * attempt
  * to establish a {@link BluetoothSocket}.
  *
  * @author kendavidson
@@ -39,7 +41,8 @@ public abstract class ConnectionConnector extends Thread {
     protected abstract BluetoothSocket connect(Properties properties) throws IOException;
 
     /**
-     * Provide appropriate cancel logic.  In most cases connectors are quickly successful or
+     * Provide appropriate cancel logic. In most cases connectors are quickly
+     * successful or
      * not, so cancel most likely won't get called.
      */
     protected abstract void cancel();
@@ -71,14 +74,17 @@ public abstract class ConnectionConnector extends Thread {
     }
 
     /**
-     * Responsible for providing the {@link ConnectionConnector} a method for communication with
-     * it's caller.  As the calls are done from the {@link ConnectionConnector} thread it's
+     * Responsible for providing the {@link ConnectionConnector} a method for
+     * communication with
+     * it's caller. As the calls are done from the {@link ConnectionConnector}
+     * thread it's
      * important that the methods are synchronized appropriately.
      *
      * @param <BluetoothSocket>
      */
     public interface ConnectorListener<BluetoothSocket> {
         void success(BluetoothSocket socket);
+
         void failure(Exception e);
     }
 }
